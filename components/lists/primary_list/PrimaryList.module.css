@@ -1,0 +1,40 @@
+
+.listContainer {
+    @apply grid grid-cols-1 gap-10;
+}
+
+.listContainer > div {
+    @apply relative;
+    direction: ltr;
+}
+
+.listContainer > div > h3 {
+    @apply relative z-10 text-4xl font-bold;
+    font-family: 'Righteous', cursive;
+}
+
+.listContainer > div span{
+    @apply absolute bottom-3 -right-4 text-6xl font-black capitalize z-0 text-left block;
+    color: rgba(0,0,0,0.0);
+    -webkit-text-stroke: 1px rgba(168, 85 , 247 , 0.6);
+    font-family: 'Righteous', cursive;
+}
+
+.listContainer > ul {
+    @apply grid grid-cols-1 gap-8 pr-10;
+}
+
+.listContainer > ul li {
+    @apply relative capitalize;
+}
+
+
+.listContainer > ul li::before {
+    content: '';
+    @apply w-2 h-2 rounded-full bg-violet-700 block absolute top-2.5 -right-10;
+}
+.listContainer > ul li::after {
+    content: '';
+    @apply w-5 h-5 rounded-full bg-transparent border border-white block absolute top-1 -right-12 mr-0.5;
+}
+

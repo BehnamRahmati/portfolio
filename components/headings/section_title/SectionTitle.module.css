@@ -1,0 +1,31 @@
+.titleContainer {
+    @apply grid place-items-center w-fit mx-auto;
+}
+
+.titleContainer h2 {
+    @apply font-black text-5xl lg:text-6xl text-center uppercase relative w-fit;
+    font-family: 'Righteous', cursive;
+}
+
+.titleContainer h2 span {
+    @apply block;
+}
+
+.titleShadow{
+    @apply absolute -top-12 text-center lg:top-auto lg:bottom-6 -left-5 -right-5 lg:right-auto lg:-left-12 text-7xl lg:text-9xl font-black capitalize z-0 text-left block;
+    color: rgba(0,0,0,0.0);
+    -webkit-text-stroke: 1px rgba(168, 85 , 247 , 0.6);
+    font-family: 'Righteous', cursive;
+}
+
+.subtitle {
+    @apply flex flex-row items-end mt-5 w-full;
+}
+
+.subtitle > div {
+    @apply flex-1 border-b-2 border-b-white h-4 mr-10 lg:mr-20 mb-2 block;
+}
+
+.subtitle > p {
+    @apply text-lg font-bold capitalize ;
+}

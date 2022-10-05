@@ -1,15 +1,20 @@
 import styles from "./PrimaryLayout.module.css";
+import {ReactNode} from "react";
+import Header from "@/components/header/Header";
+import Footer from "@/components/footer/Footer";
 
 export interface IPrimaryLayout {
-	sampleTextProp: string;
-	className?: string;
+	children: ReactNode;
 }
 
 const PrimaryLayout: React.FC<IPrimaryLayout> = ({
-	sampleTextProp,
-	className = "",
+	children,
 }) => {
-	return <div className={`${className}`}>{sampleTextProp}</div>;
+	return <>
+		<Header />
+		<main className='flex-1'>{children}</main>
+		<Footer />
+	</>;
 };
 
 export default PrimaryLayout;

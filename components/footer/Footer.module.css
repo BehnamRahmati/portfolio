@@ -1,0 +1,9 @@
+.footer {
+    background: radial-gradient( at bottom  , rgb(99 102 241) -50% , rgb(15,23,42) 50%);
+}
+
+@media (max-width: 768px) {
+    .footer {
+        background: radial-gradient(circle at bottom  , rgb(99 102 241) -40% , rgb(15,23,42) 60%);
+    }
+}

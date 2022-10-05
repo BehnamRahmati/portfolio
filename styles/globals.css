@@ -1,6 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+
 @tailwind base;
+
+html , body {
+	background: rgb(15,23,42);
+}
+
+#__next {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	width: 100vw;
+	overflow-x: hidden;
+}
+
+.bg-moon-gradient {
+	background: radial-gradient( circle at top  , rgb(99 102 241) -50% , rgb(15,23,42) 50%);
+}
+
+.home-banner {
+	@apply h-screen w-screen grid place-items-center;
+}
+
+
+.home-banner-introduction {
+	@apply grid place-items-center;
+}
+
+.home-banner-introduction h1 {
+	@apply relative;
+}
+
+.home-banner-introduction h1 span{
+	@apply block text-7xl lg:text-9xl font-black capitalize text-center font-serif relative z-20;
+	font-family: 'Righteous', cursive;
+}
+
+.home-banner-introduction h1::before{
+	@apply absolute -top-4 -left-4 text-7xl lg:text-9xl font-black capitalize z-10;
+	content: 'Behnam';
+	color: rgba(0,0,0,0.0);
+	-webkit-text-stroke: 2px rgba(107, 33 , 168, 0.7);
+	font-family: 'Righteous', cursive;
+}
+
+.home-banner-introduction p {
+	@apply block w-full lg:w-2/5 px-2 lg:px-0 text-xl font-thin text-center capitalize mt-5 leading-8;
+	font-family: 'Comfortaa', cursive;
+}
+
+.home-banner-introduction p span{
+	@apply  font-bold;
+}
+
+.primaryCars_container > div:nth-child(2n+1) {
+	margin-top: 10rem;
+}
+
+.notFoundPage h2 {
+	@apply font-black text-center;
+	font-size: 200px;
+	line-height: 200px;
+}
+
+.notFoundPage h3 {
+	@apply text-4xl font-bold text-center capitalize;
+	font-size: 53px;
+}
+
+@media (max-width: 768px) {
+	.home-banner {
+		background: radial-gradient( circle at top  , rgb(99 102 241) -40% , rgb(15,23,42) 60%);
+	}
+
+	.notFoundPage h2 {
+		font-size: 150px;
+		line-height: 200px;
+	}
+
+	.notFoundPage h3 {
+		font-size: 36px;
+	}
+}
+
+
 @tailwind components;
 @tailwind utilities;
+
+
 
 @font-face {
 	font-family: "Vazirmatn";
@@ -83,10 +172,9 @@ html,
 body {
 	padding: 0;
 	margin: 0;
-	font-family: "Vazirmatn", BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+	font-family: 'Comfortaa' ,"Vazirmatn", BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
 		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-	background-color: #e9e9e9;
-	color: #0a0a0a;
+	color: #fff;
 }
 
 a {
@@ -97,15 +185,30 @@ a {
 .ltr {
 	direction: ltr;
 }
-/* @media (prefers-color-scheme: dark) {
-	html {
-		color-scheme: dark;
-	}
-	body {
-		color: white;
-		background: black;
-	}
-} */
+
+.font-righteous {
+	font-family: 'Righteous', cursive;
+}
+
+.bg-svg {
+	background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='400' ry='400' stroke='white' stroke-width='4' stroke-dasharray='15' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
+	border-radius: 400px;
+}
+
+.banner-text-shadow {
+	text-shadow: -10px 10px rgba(168, 85 , 247 , 1);
+}
+
+.banner-dot::before {
+	content: '';
+	position: absolute;
+	top: -17px;
+	left: -16px;
+	width: 40px;
+	height: 40px;
+	border-radius:50%;
+	border: 1px solid #fff;
+}
 
 .content-ellipsis p {
 	white-space: nowrap;

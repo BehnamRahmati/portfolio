@@ -1,0 +1,28 @@
+.cardContainer {
+    @apply lg:border lg:border-violet-500 rounded-3xl lg:p-6 pt-4 lg:pt-14 relative;
+}
+
+.cardImage  {
+    @apply  relative w-full h-44 lg:h-56 rounded-3xl overflow-hidden;
+}
+
+.cardImage span , .cardImage img  {
+    border-radius: 30px !important;
+}
+
+.cardHeading {
+    @apply flex flex-row items-center justify-between py-3 lg:px-6 lg:absolute lg:-top-6 z-10 w-full lg:right-0;
+    background: linear-gradient(to left , transparent, rgb(15,23,42), rgb(15,23,42) , rgb(15,23,42), transparent );
+}
+
+.cardHeading div {
+    @apply flex-1  flex flex-row items-center justify-between lg:justify-start space-x-5 space-x-reverse ;
+}
+
+.cardHeading .btnPreview {
+    @apply py-2 lg:pt-1.5 lg:pb-1 block px-5 rounded-md bg-violet-700 capitalize text-sm cursor-pointer;
+}
+
+.cardHeading .btnGithub {
+    @apply bg-white text-violet-600 rounded-md py-1 px-2 cursor-pointer;
+}

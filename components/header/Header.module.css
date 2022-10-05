@@ -1,0 +1,64 @@
+.header {
+    @apply fixed top-0 right-0 left-0 w-screen p-5 lg:py-5 lg:px-0 z-30;
+}
+
+.header > div {
+    @apply flex flex-row items-center justify-between container mx-auto;
+}
+
+.headerTitle{
+    @apply text-2xl lg:text-5xl font-black ;
+    font-family: 'Righteous', cursive;
+    direction: ltr;
+}
+
+.headerTitle > span {
+    @apply text-violet-700;
+}
+
+.headerMenu {
+   @apply fixed bottom-0 left-0 right-0 top-0;
+    background: radial-gradient( farthest-corner at 100vw 0px   , rgb(99 102 241) -50% , rgb(15,23,42) 50%);
+}
+
+.headerMenu > div {
+    @apply flex flex-col h-full;
+}
+
+.headerMenu .navLinks {
+    @apply font-black text-4xl lg:text-6xl uppercase relative w-fit;
+    font-family: 'Righteous', cursive;
+}
+
+.headerMenu .navLinks::before {
+    @apply absolute bottom-3 right-full w-screen border-b-2 border-b-white mr-10 block opacity-0 transition-opacity delay-75 ease-linear;
+    content: '';
+}
+
+.headerMenu .navLinks:hover::before {
+    @apply opacity-100;
+}
+
+.headerMenu .navLinks::after {
+    @apply absolute -top-2 lg:-top-4 right-0 w-14 lg:w-20 h-14 lg:h-20 rounded-full border border-white block opacity-0 transition-opacity delay-75 ease-linear;
+    content: '';
+}
+
+.headerMenu .navLinks:hover::after {
+    @apply opacity-100;
+}
+
+.headerMenu .navLinks span {
+    @apply block;
+}
+
+.headerMenu .navLinks span:nth-child(1){
+    @apply absolute bottom-6 -left-6 text-4xl lg:text-6xl font-black capitalize z-0 text-left block opacity-0 transition-opacity delay-75 ease-linear;
+    color: rgba(0,0,0,0.0);
+    -webkit-text-stroke: 1px rgba(168, 85 , 247 , 0.6);
+    font-family: 'Righteous', cursive;
+}
+
+.headerMenu .navLinks:hover span:nth-child(1) {
+    @apply opacity-100;
+}
