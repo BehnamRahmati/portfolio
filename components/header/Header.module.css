@@ -1,9 +1,15 @@
 .header {
-    @apply fixed top-0 right-0 left-0 w-screen p-5 lg:py-5 lg:px-0 z-30;
+    @apply fixed top-0 right-0 left-0 w-screen p-5 lg:py-5 lg:px-0 z-10 transition-all delay-75 ease-in-out;
+}
+.headerScrolled {
+    @apply backdrop-blur-lg;
+    padding: 10px 0 !important;
+
 }
 
+
 .header > div {
-    @apply flex flex-row items-center justify-between container mx-auto;
+    @apply flex flex-row items-center justify-between container mx-auto ;
 }
 
 .headerTitle{
@@ -25,28 +31,25 @@
     @apply flex flex-col h-full;
 }
 
-.headerMenu .navLinks {
-    @apply font-black text-4xl lg:text-6xl uppercase relative w-fit;
+.headerMenu .navLinks , .headerMenu .activeNavLinks {
+    @apply font-black text-4xl lg:text-6xl uppercase relative w-fit transition-all delay-75 ease-in-out;
     font-family: 'Righteous', cursive;
 }
 
-.headerMenu .navLinks::before {
-    @apply absolute bottom-3 right-full w-screen border-b-2 border-b-white mr-10 block opacity-0 transition-opacity delay-75 ease-linear;
+.headerMenu .navLinks:hover {
+    @apply transform scale-110;
+}
+
+.headerMenu .activeNavLinks::before {
+    @apply absolute bottom-3 right-full w-screen border-b-2 border-b-white mr-10 block transition-opacity delay-75 ease-linear;
     content: '';
 }
 
-.headerMenu .navLinks:hover::before {
-    @apply opacity-100;
-}
-
-.headerMenu .navLinks::after {
-    @apply absolute -top-2 lg:-top-4 right-0 w-14 lg:w-20 h-14 lg:h-20 rounded-full border border-white block opacity-0 transition-opacity delay-75 ease-linear;
-    content: '';
-}
 
 .headerMenu .navLinks:hover::after {
     @apply opacity-100;
 }
+
 
 .headerMenu .navLinks span {
     @apply block;
@@ -59,6 +62,10 @@
     font-family: 'Righteous', cursive;
 }
 
-.headerMenu .navLinks:hover span:nth-child(1) {
-    @apply opacity-100;
+.headerMenu .activeNavLinks span:nth-child(1){
+    @apply absolute bottom-6 -left-6 text-4xl lg:text-6xl font-black capitalize z-0 text-left block transition-opacity delay-75 ease-linear;
+    color: rgba(0,0,0,0.0);
+    -webkit-text-stroke: 1px rgba(168, 85 , 247 , 0.6);
+    font-family: 'Righteous', cursive;
 }
+

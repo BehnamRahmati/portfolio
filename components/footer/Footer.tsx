@@ -2,6 +2,7 @@ import styles from "./Footer.module.css";
 
 import {SiLinkedin} from 'react-icons/si';
 import {FaBehanceSquare , FaGithubSquare , FaWhatsappSquare , FaEnvelope} from 'react-icons/fa';
+import {useEffect, useRef} from "react";
 
 export interface IFooter {
 	className?: string;
@@ -10,6 +11,19 @@ export interface IFooter {
 const Footer: React.FC<IFooter> = ({
 	className = "",
 }) => {
+	const cursorRef = useRef<HTMLDivElement>(null)
+
+	useEffect(() => {
+
+		if(cursorRef.current !== null){
+			document.body.addEventListener("mousemove", function(e) {
+				cursorRef.current!.style.left = e.clientX + "px",
+					cursorRef.current!.style.top = e.clientY + "px";
+			});
+		}
+
+	}, [cursorRef]);
+
 	return <footer className={styles.footer}>
 
 		<div className='px-5 lg:px-0 py-10 lg:py-24'>
@@ -30,6 +44,9 @@ const Footer: React.FC<IFooter> = ({
 
 			</div>
 		</div>
+
+		<div className={styles.cursor} ref={cursorRef} id="cursor"></div>
+
 
 	</footer>;
 };

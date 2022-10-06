@@ -1,14 +1,41 @@
 import PrimaryLayout from "@/components/layouts/primary_layout/PrimaryLayout";
-import { ReactElement } from "react";
+import {ReactElement, useRef, useState} from "react";
 import type { NextPageWithLayout } from "./page";
 import SectionTitle from "@/components/headings/section_title/SectionTitle";
 import SecondaryCard from "@/components/cards/secondary_card/SecondaryCard";
 import PrimaryCard from "@/components/cards/primary_card/PrimaryCard";
 import PrimaryList from "@/components/lists/primary_list/PrimaryList";
 import {IPrimaryCardMockProps} from "@/components/cards/primary_card/PrimaryCard.mocks";
+import ContactForm from "@/components/forms/contact_form/ContactForm";
+import PrimaryButton from "@/components/buttons/primary-button/PrimaryButton";
+
+
+// external dependencies
 import {FiArrowUpRight} from 'react-icons/fi';
+import styles from "@/components/header/Header.module.css";
+import {CgClose} from "react-icons/cg";
+import {Transition} from "react-transition-group";
+
+
 
 const Home: NextPageWithLayout = () => {
+
+	const [inPropContact, setInPropContact] = useState(false);
+	const elRef = useRef(null);
+	const duration = 300;
+	const defaultStyle = {
+		transition: `all ${duration}ms ease-in-out`,
+		opacity: 0,
+		zIndex: 0,
+	}
+
+	const transitionStyles : { [id: string]: React.CSSProperties }=  {
+		entering: { opacity: 1 , zIndex: 50 },
+		entered:  { opacity: 1, zIndex: 50 },
+		exiting:  { opacity: 0, zIndex: -10 , transition: `all ${duration}ms ease-in-out`},
+		exited:  { opacity: 0 , zIndex: -10 ,transition: `all ${duration}ms ease-in-out`},
+	};
+
 
 	const renderPrimaryCards = () => {
 		let evens: string[] = [];
@@ -89,7 +116,9 @@ const Home: NextPageWithLayout = () => {
 
 			<SectionTitle shortTitle={'work'} title={'recent work'} subtitle={'works'}/>
 			{renderPrimaryCards()}
-
+			<div className="grid place-items-center my-20">
+				<PrimaryButton content={'view more'} url={'/works'} />
+			</div>
 		</section>
 
 
@@ -99,8 +128,8 @@ const Home: NextPageWithLayout = () => {
 
 			<div className="pt-32 grid place-items-center">
 
-				<div className="bg-svg p-5 cursor-pointer">
-					<div className="rounded-full border-2 border-dashed border-violet-700 ltr grid place-items-center w-56 h-56 lg:w-96 lg:h-96 p-5 lg:p-20">
+				<div className="bg-svg p-5 cursor-pointer cursor-pointer" onClick={() => setInPropContact(!inPropContact)}>
+					<div className="cursor-pointer rounded-full border-2 border-dashed border-violet-700 ltr grid place-items-center w-56 h-56 lg:w-96 lg:h-96 p-5 lg:p-20">
 						<p className='text-sm text-slate-200 ltr my-3 capitalize w-24 lg:w-44'>desire for a project that rocks ?</p>
 						<h3 className="flex flex-col ">
 							<span className="font-bold text-2xl lg:text-5xl font-righteous capitalize">contact</span>
@@ -111,6 +140,35 @@ const Home: NextPageWithLayout = () => {
 				</div>
 
 			</div>
+
+			<Transition nodeRef={elRef} in={inPropContact} timeout={500}>
+				{state => (
+					<div className={styles.headerMenu} ref={elRef} style={{
+						...defaultStyle,
+						...transitionStyles[state]
+					}}>
+						<div className="flex flex-col w-full h-screen">
+							<div className="flex flex-row items-center justify-between container mx-auto p-5 lg:py-5 lg:px-0">
+								<div>
+									<button type="button" onClick={() => setInPropContact(!inPropContact)}>
+										<CgClose className='text-white text-2xl lg:text-5xl' />
+									</button>
+								</div>
+
+								<div>
+									<p className={styles.headerTitle}>BR<span>.</span></p>
+								</div>
+							</div>
+
+							<div className='container mx-auto flex-1 w-1/2 mx-auto mb-20 py-14'>
+								<h3 className='ltr capitalize text-5xl font-black font-righteous w-full text-center mb-10'>Contact me.</h3>
+								<ContactForm />
+							</div>
+						</div>
+
+					</div>
+				)}
+			</Transition>
 
 		</section>
 

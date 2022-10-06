@@ -11,7 +11,7 @@ const PrimaryButton: React.FC<IPrimaryButton> = ({
 	content,
 	url
 }) => {
-	return <div className='border border-white rounded-lg p-2 w-fit flex flex-row items-center justify-center'>
+	return <div className='border border-white rounded-lg p-2 w-fit flex flex-row items-center justify-center transition-all delay-75 ease-in-out transform hover:scale-105'>
 		<Link href={url}>
 			<a className="bg-violet-500 rounded-lg text-white px-4 pb-2 pt-3 capitalize flex flex-row items-center justify-center">
 				<FiArrowUpRight className="text-xl text-white ml-2" />
