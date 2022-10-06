@@ -160,7 +160,7 @@ const Home: NextPageWithLayout = () => {
 								</div>
 							</div>
 
-							<div className='container mx-auto flex-1 w-1/2 mx-auto mb-20 py-14'>
+							<div className='container mx-auto flex-1 px-5 lg:px-0 lg:w-1/2 mx-auto mb-20 py-14'>
 								<h3 className='ltr capitalize text-5xl font-black font-righteous w-full text-center mb-10'>Contact me.</h3>
 								<ContactForm />
 							</div>

@@ -15,6 +15,7 @@ const Footer: React.FC<IFooter> = ({
 
 	useEffect(() => {
 
+		if(window.innerWidth > 1040) return;
 		if(cursorRef.current !== null){
 			document.body.addEventListener("mousemove", function(e) {
 				cursorRef.current!.style.left = e.clientX + "px",
@@ -37,9 +38,9 @@ const Footer: React.FC<IFooter> = ({
 				</div>
 
 				<div className='flex flex-row items-end ltr space-x-4'>
-					<p className="capitalize font-bold leading-8 text-center">designed <span className=' text-4xl text-violet-700 '>.</span> by osama daimallah</p>
+					<p className="capitalize text-sm lg:text-base font-bold leading-8 text-center">designed <span className=' text-4xl text-violet-700 '>.</span> by osama daimallah</p>
 					<span className="text-xl text-violet-700 font-bold leading-8">&</span>
-					<p className="capitalize font-bold leading-8 text-center">developed <span className='text-4xl text-violet-700'>.</span> by behnam rahmati</p>
+					<p className="capitalize text-sm lg:text-base font-bold leading-8 text-center">developed <span className='text-4xl text-violet-700'>.</span> by behnam rahmati</p>
 				</div>
 
 			</div>

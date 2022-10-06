@@ -54,7 +54,7 @@ const Header: React.FC<IHeader> = ({
 		<div className={ scrolled ? `${styles.header} ${styles.headerScrolled}` : styles.header }>
 			<div>
 				<div>
-					<button type="button" onClick={() => setInProp(!inProp)}>
+					<button className='p-1 pt-2' type="button" onClick={() => setInProp(!inProp)}>
 						<HiOutlineMenuAlt4 className='text-white text-2xl lg:text-5xl' />
 					</button>
 				</div>

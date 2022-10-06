@@ -6,11 +6,11 @@ import PageHeading from "@/components/headings/page_heading/PageHeading";
 const About: NextPageWithLayout = () => {
     return (
         <>
-            <section className="min-h-screen bg-moon-gradient pt-44 ">
+            <section className="min-h-screen bg-moon-gradient pt-14 lg:pt-44 ">
                 <div className="px-4 py-24 lg:p-24 container mx-auto">
                     <PageHeading title={'brief about me'} subtitle={'bio'} shortTitle={'about'} />
 
-                    <div className="p-5 pt-32">
+                    <div className=" pt-32">
                         <div className="lg:grid lg:grid-cols-3 lg:gap-20 flex flex-col-reverse space-y-20 space-y-reverse lg:space-y-0">
                             <div className="lg:col-span-2 flex flex-col justify-center h-full">
                                 <h3 className="mb-6 font-righteous font-bold text-3xl ltr first-letter:capitalize">brief about me</h3>

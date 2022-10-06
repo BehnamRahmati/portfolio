@@ -3,31 +3,35 @@
 }
 
 
-.cursor {
-    @apply bg-violet-400;
-    position: fixed;
-    border-radius: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    pointer-events: none;
-    left: -100px;
-    top: 50%;
-    mix-blend-mode: difference;
-    z-index: 10000;
-    height: 7px;
-    width: 7px;
-    transition: all ease-out;
-}
-
-.cursor::before {
-    content: "";
-    @apply bg-transparent border-2 border-white rounded-full w-20 h-20 absolute ;
-    transform: translateX(-50%) translateY(-50%);
-    left: 3px;
-    top: 50%;
-}
 
 @media (max-width: 768px) {
     .footer {
         background: radial-gradient(circle at bottom  , rgb(99 102 241) -40% , rgb(15,23,42) 60%);
+    }
+}
+
+@media (min-width: 1040px) {
+
+    .cursor {
+        @apply bg-violet-400;
+        position: fixed;
+        border-radius: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        pointer-events: none;
+        left: -100px;
+        top: 50%;
+        mix-blend-mode: difference;
+        z-index: 10000;
+        height: 7px;
+        width: 7px;
+        transition: all ease-out;
+    }
+
+    .cursor::before {
+        content: "";
+        @apply bg-transparent border-2 border-white rounded-full w-20 h-20 absolute ;
+        transform: translateX(-50%) translateY(-50%);
+        left: 3px;
+        top: 50%;
     }
 }

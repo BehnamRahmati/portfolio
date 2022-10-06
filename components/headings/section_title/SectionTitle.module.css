@@ -23,7 +23,7 @@
 }
 
 .subtitle > div {
-    @apply flex-1 border-b-2 border-b-white h-4 mr-10 lg:mr-20 mb-2 block;
+    @apply flex-1 border-b-2 border-b-white h-4 mr-5 lg:mr-20 mb-2 block;
 }
 
 .subtitle > p {

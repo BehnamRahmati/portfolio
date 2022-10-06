@@ -1,12 +1,10 @@
 .header {
-    @apply fixed top-0 right-0 left-0 w-screen p-5 lg:py-5 lg:px-0 z-10 transition-all delay-75 ease-in-out;
+    @apply fixed top-0 right-0 left-0 w-screen p-5 lg:py-5 lg:px-0 z-30 transition-all delay-75 ease-in-out;
 }
 .headerScrolled {
     @apply backdrop-blur-lg;
     padding: 10px 0 !important;
-
 }
-
 
 .header > div {
     @apply flex flex-row items-center justify-between container mx-auto ;
@@ -67,5 +65,12 @@
     color: rgba(0,0,0,0.0);
     -webkit-text-stroke: 1px rgba(168, 85 , 247 , 0.6);
     font-family: 'Righteous', cursive;
+}
+
+
+@media (max-width: 1040px) {
+    .headerScrolled {
+        padding: 5px 20px !important;
+    }
 }
 

@@ -25,7 +25,7 @@ const PrimaryCard: React.FC<IPrimaryCard> = ({
 		</div>
 
 		<div className={styles.cardImage}>
-			<Image src={'/placeholder-image.png'} layout={'fill'} className='rounded-3xl' />
+			<Image src={'/placeholder-image.png'} blurDataURL={'/placeholder-image.png'}  placeholder={'blur'} alt={'behnam-rahmati-project'} layout={'fill'} className='rounded-3xl' />
 		</div>
 
 		<h3 className='flex lg:hidden flex-row items-center mt-2 lg:mt-0'>

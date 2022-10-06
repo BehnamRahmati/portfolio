@@ -14,14 +14,14 @@
 }
 
 .listContainer > div span{
-    @apply absolute bottom-3 -right-4 text-6xl font-black capitalize z-0 text-left block;
+    @apply absolute bottom-3 -left-4 text-6xl font-black capitalize z-0 text-left block;
     color: rgba(0,0,0,0.0);
     -webkit-text-stroke: 1px rgba(168, 85 , 247 , 0.6);
     font-family: 'Righteous', cursive;
 }
 
 .listContainer > ul {
-    @apply grid grid-cols-1 gap-8 pr-10;
+    @apply grid grid-cols-1 gap-8 pl-10;
 }
 
 .listContainer > ul li {
@@ -31,10 +31,10 @@
 
 .listContainer > ul li::before {
     content: '';
-    @apply w-2 h-2 rounded-full bg-violet-700 block absolute top-2.5 -right-10;
+    @apply w-2 h-2 rounded-full bg-violet-700 block absolute top-2.5 -left-10;
 }
 .listContainer > ul li::after {
     content: '';
-    @apply w-5 h-5 rounded-full bg-transparent border border-white block absolute top-1 -right-12 mr-0.5;
+    @apply w-5 h-5 rounded-full bg-transparent border border-white block absolute top-1 -left-12 ml-0.5;
 }
 
