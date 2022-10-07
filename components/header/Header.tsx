@@ -17,7 +17,6 @@ const Header: React.FC<IHeader> = ({
 	const [pathname, setPathname] = useState('/');
 	const [scrolled , setScrolled] = useState(false)
 	const nodeRef = useRef(null);
-	// const headerRef = useRef<HTMLDivElement>(null);
 	const router = useRouter();
 
 	useEffect(() => {

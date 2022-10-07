@@ -1,38 +1,14 @@
-import {NextPageWithLayout} from "../page";
+import {IHome, IPortfolio, NextPageWithLayout} from "../page";
 import {ReactElement} from "react";
 import PrimaryLayout from "@/components/layouts/primary_layout/PrimaryLayout";
-import PrimaryCard from "@/components/cards/primary_card/PrimaryCard";
-import {IPrimaryCardMockProps} from "@/components/cards/primary_card/PrimaryCard.mocks";
 import PageHeading from "@/components/headings/page_heading/PageHeading";
 import {AiOutlineHome, AiOutlineMail, AiOutlinePhone} from "react-icons/ai";
+import {renderPrimaryCards} from '@/components//utils/helpers'
+import axios from "axios";
 
-const Works: NextPageWithLayout = () => {
-
-    const renderPrimaryCards = () => {
-        let evens: string[] = [];
-        let odds: string[] = [];
-        [...new Array(5)].forEach((_,i) => {
-
-            if(i % 2 === 0) {
-                evens = [...evens , '-'];
-            } else {
-                odds = [...odds , '-']
-            }
-
-        })
-
-        return (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 py-20 ">
-                <div className={'flex flex-col space-y-10 lg:space-y-20 lg:pt-20'}>
-                    {odds.map((_ , i) => <PrimaryCard key={i}  {...IPrimaryCardMockProps.base}  />)}
-                </div>
-                <div className={'flex flex-col space-y-10 lg:space-y-20'}>
-                    {evens.map((_ , i) => <PrimaryCard key={i}  {...IPrimaryCardMockProps.base}  />)}
-                </div>
-            </div>
-
-        )
-    }
+const Works: NextPageWithLayout<{ works : IHome[] , contact: IHome}>= ({works , contact}) => {
+    const worksArr = works[0].works
+    const {mobile_number , email_address , home_address} = contact;
 
     return (
         <>
@@ -40,7 +16,7 @@ const Works: NextPageWithLayout = () => {
 
                 <div className="container mx-auto px-5 pt-24 lg:p-24 space-y-10 lg:space-y-20">
                     <PageHeading shortTitle={'work'} title={'recent work'} subtitle={'works'}/>
-                    {renderPrimaryCards()}
+                    {renderPrimaryCards(worksArr!)}
                 </div>
             </section>
 
@@ -58,7 +34,7 @@ const Works: NextPageWithLayout = () => {
                                 <AiOutlinePhone className='text-6xl text-violet-800 transform rotate-90 block w-16 h-16' />
                                 <div className="ltr ml-4 space-y-2">
                                     <h4 className="text-xl font-righteous font-bold ltr capitalize">mobile number :</h4>
-                                    <p className="text-sm lg:text-lg ltr tracking-wider">+989025186640</p>
+                                    <p className="text-sm lg:text-lg ltr tracking-wider">{mobile_number}</p>
                                 </div>
                             </li>
 
@@ -66,7 +42,7 @@ const Works: NextPageWithLayout = () => {
                                 <AiOutlineHome className='text-6xl text-violet-800 block w-16 h-16' />
                                 <div className="ltr ml-4 space-y-2">
                                     <h4 className="text-xl font-righteous font-bold ltr capitalize">home address :</h4>
-                                    <p className="text-sm lg:text-lg ltr tracking-wider">markazi , arak , hepko</p>
+                                    <p className="text-sm lg:text-lg ltr tracking-wider">{home_address}</p>
                                 </div>
                             </li>
 
@@ -74,7 +50,7 @@ const Works: NextPageWithLayout = () => {
                                 <AiOutlineMail className='text-6xl text-violet-800 block w-16 h-16' />
                                 <div className="ltr ml-4 space-y-2">
                                     <h4 className="text-xl font-righteous font-bold ltr capitalize">email address :</h4>
-                                    <p className="text-sm lg:text-lg ltr tracking-wider">behnam.main@gmail.com</p>
+                                    <p className="text-sm lg:text-lg ltr tracking-wider">{email_address}</p>
                                 </div>
                             </li>
                         </ul>
@@ -92,3 +68,32 @@ Works.getLayout = function getLayout(page: ReactElement) {
 };
 
 export default Works;
+
+
+export async function getStaticProps() {
+    let props = { works: {} , contact: {}}
+    try {
+        const { data: worksRes } : {data: IPortfolio[] } =  await axios(process.env.BASE_URL! , {params : {search : 'home'}});
+        const worksArr = worksRes.map( (response)  => {
+            return {works:response.acf.works}
+        })
+        props.works = worksArr;
+
+        const { data:contactRes } : {data: IPortfolio[] } =  await axios(process.env.BASE_URL! , {params : {search : 'contact'}});
+        const contact= contactRes.map( (response)  => {
+            const {mobile_number , email_address , home_address} = response.acf
+            return {
+                mobile_number , email_address , home_address
+            }
+        })
+        props.contact = contact[0];
+    }
+    catch (err) {
+        console.log('from works page :' , err  )
+    }
+
+    return {
+        props,
+        revalidate: 1
+    }
+}

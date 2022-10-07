@@ -52,12 +52,12 @@ html , body {
 	font-family: 'Righteous', cursive;
 }
 
-.home-banner-introduction p {
+.home-banner-introduction .home-banner-subtitle {
 	@apply block w-full lg:w-2/5 px-2 lg:px-0 text-xl font-thin text-center capitalize mt-5 leading-8;
 	font-family: 'Comfortaa', cursive;
 }
 
-.home-banner-introduction p span{
+.home-banner-introduction .home-banner-subtitle span , .home-banner-introduction .home-banner-subtitle strong{
 	@apply  font-bold;
 }
 

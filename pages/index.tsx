@@ -1,27 +1,29 @@
 import PrimaryLayout from "@/components/layouts/primary_layout/PrimaryLayout";
 import {ReactElement, useRef, useState} from "react";
-import type { NextPageWithLayout } from "./page";
+import type { NextPageWithLayout, IPortfolio , IHome } from "./page";
 import SectionTitle from "@/components/headings/section_title/SectionTitle";
 import SecondaryCard from "@/components/cards/secondary_card/SecondaryCard";
-import PrimaryCard from "@/components/cards/primary_card/PrimaryCard";
 import PrimaryList from "@/components/lists/primary_list/PrimaryList";
-import {IPrimaryCardMockProps} from "@/components/cards/primary_card/PrimaryCard.mocks";
 import ContactForm from "@/components/forms/contact_form/ContactForm";
 import PrimaryButton from "@/components/buttons/primary-button/PrimaryButton";
-
+import {renderPrimaryCards} from '@/components//utils/helpers'
 
 // external dependencies
 import {FiArrowUpRight} from 'react-icons/fi';
 import styles from "@/components/header/Header.module.css";
 import {CgClose} from "react-icons/cg";
 import {Transition} from "react-transition-group";
+import axios from "axios";
 
 
 
-const Home: NextPageWithLayout = () => {
-
+const Home: NextPageWithLayout<{ home : IHome}> = ({home}) => {
+	const{ banner , skills , works ,information} = home;
+	const {first_name, last_name, subtitle} = banner![0];
 	const [inPropContact, setInPropContact] = useState(false);
 	const elRef = useRef(null);
+
+
 	const duration = 300;
 	const defaultStyle = {
 		transition: `all ${duration}ms ease-in-out`,
@@ -37,31 +39,7 @@ const Home: NextPageWithLayout = () => {
 	};
 
 
-	const renderPrimaryCards = () => {
-		let evens: string[] = [];
-		let odds: string[] = [];
-		[...new Array(5)].forEach((_,i) => {
 
-			if(i % 2 === 0) {
-				evens = [...evens , '-'];
-			} else {
-				odds = [...odds , '-']
-			}
-
-		})
-
-		return (
-			<div className="grid grid-cols1 lg:grid-cols-2 gap-20 py-20 ">
-				<div className={'flex flex-col space-y-20 pt-20'}>
-					{odds.map((_ , i) => <PrimaryCard key={i}  {...IPrimaryCardMockProps.base}  />)}
-				</div>
-				<div className={'flex flex-col space-y-20'}>
-					{evens.map((_ , i) => <PrimaryCard key={i}  {...IPrimaryCardMockProps.base}  />)}
-				</div>
-			</div>
-
-		)
-	}
 
 	return <>
 
@@ -69,14 +47,11 @@ const Home: NextPageWithLayout = () => {
 
 			<div className="home-banner-introduction relative">
 				<h1>
-					<span>behnam</span>
-					<span>rahmati</span>
+					<span>{first_name}</span>
+					<span>{last_name}</span>
 				</h1>
 
-				<p>
-					<span>front end developer at Dot line from Arak.</span>
-					I have been working on freelance projects. excited for upcoming opportunities
-				</p>
+				<div className="home-banner-subtitle" dangerouslySetInnerHTML={{__html : subtitle}}></div>
 			</div>
 
 			<div className='absolute bottom-24 lg:bottom-44 left-24 text-7xl font-bold font-righteous banner-text-shadow ' >B</div>
@@ -90,9 +65,9 @@ const Home: NextPageWithLayout = () => {
 			<SectionTitle shortTitle={'progress'} title={'Project Progress'} subtitle={'progress of creating content'}/>
 
 			<div className="grid grid-cols-1 py-10">
-				{[...new Array(5)].map((_,i) => {
+				{skills!.map((skill,i) => {
 					return(
-						<SecondaryCard key={i} title={'counscilng and analysis'} description={'I have been working on freelance projects. excited for upcoming opportunities.I have been working on freelance projects. excited for upcoming opportunities.I have been working on freelance projects. excited for upcoming opportunities.'} count={i+1} />
+						<SecondaryCard key={skill.title} title={skill.title} description={skill.content} count={i+1} />
 					)
 				})}
 			</div>
@@ -102,10 +77,10 @@ const Home: NextPageWithLayout = () => {
 
 		<section className="container mx-auto py-20 px-5 lg:p-24">
 			<SectionTitle shortTitle={'experience'} title={'information technology'} subtitle={'experience'}/>
-			<div className="flex flex-col lg:flex-row space-y-24 lg:space-y-0 items-center lg:justify-between py-24">
-				{[...new Array(3)].map((_, i) => {
+			<div className="flex flex-col lg:flex-row space-y-24 lg:space-y-0 lg:justify-between py-24 ltr">
+				{information!.map((info, i) => {
 					return(
-						<PrimaryList key={i} title={'frontend dev'} count={i + 1} list={['ui design' , 'commited' , 'deciplated' , 'web and mobile']} />
+						<PrimaryList key={info.title} title={info.title} count={i + 1} list={info.info} />
 					)
 				})}
 			</div>
@@ -115,7 +90,7 @@ const Home: NextPageWithLayout = () => {
 		<section className="container mx-auto py-20 px-5 lg:p-24">
 
 			<SectionTitle shortTitle={'work'} title={'recent work'} subtitle={'works'}/>
-			{renderPrimaryCards()}
+			{renderPrimaryCards(works!.slice(0,5))}
 			<div className="grid place-items-center my-20">
 				<PrimaryButton content={'view more'} url={'/works'} />
 			</div>
@@ -182,3 +157,29 @@ Home.getLayout = function getLayout(page: ReactElement) {
 };
 
 export default Home;
+
+
+export async function getStaticProps() {
+	let props = { home: {}}
+	try {
+		const { data } : {data: IPortfolio[] } =  await axios(process.env.BASE_URL! , {params : {search : 'home'}});
+		const home= data.map( (response)  => {
+			const {banner , skills , works, information} = response.acf
+			return {
+				banner,
+				skills,
+				works,
+				information
+			}
+		})
+		props.home = home[0];
+	}
+	catch (err) {
+		console.log('from home page :' , err  )
+	}
+
+	return {
+		props,
+		revalidate: 1
+	}
+}

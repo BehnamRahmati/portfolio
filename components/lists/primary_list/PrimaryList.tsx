@@ -3,7 +3,7 @@ import styles from "./PrimaryList.module.css";
 export interface IPrimaryList {
 	title: string;
 	count:number;
-	list: string[]
+	list: {info_item : string;}[]
 }
 
 const PrimaryList: React.FC<IPrimaryList> = ({
@@ -21,7 +21,7 @@ const PrimaryList: React.FC<IPrimaryList> = ({
 			{
 				list.map((item , i) => {
 					return(
-						<li key={i}>{item}</li>
+						<li key={item.info_item}>{item.info_item}</li>
 					)
 				})
 			}

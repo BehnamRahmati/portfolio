@@ -1,11 +1,15 @@
-import {NextPageWithLayout} from "../page";
+import {IHome, IPortfolio, NextPageWithLayout} from "../page";
 import {ReactElement} from "react";
 import PrimaryLayout from "@/components/layouts/primary_layout/PrimaryLayout";
 import PageHeading from "@/components/headings/page_heading/PageHeading";
 import {AiOutlinePhone , AiOutlineHome , AiOutlineMail} from "react-icons/ai";
 import ContactForm from "@/components/forms/contact_form/ContactForm";
+import axios from "axios";
 
-const Contact: NextPageWithLayout = () => {
+const Contact: NextPageWithLayout<{ contact : IHome}> = ({contact}) => {
+
+    const {mobile_number , email_address , home_address} = contact;
+
     return (
         <>
             <section className="min-h-screen bg-moon-gradient pt-14 lg:pt-44">
@@ -24,7 +28,7 @@ const Contact: NextPageWithLayout = () => {
                                         <AiOutlinePhone className='text-6xl text-violet-800 transform rotate-90 block' />
                                         <div className="ltr ml-4 space-y-2">
                                             <h4 className="text-xl font-righteous font-bold ltr capitalize">mobile number :</h4>
-                                            <p className="text-sm lg:text-lg ltr tracking-wider">+989025186640</p>
+                                            <p className="text-sm lg:text-lg ltr tracking-wider">{mobile_number}</p>
                                         </div>
                                     </li>
 
@@ -32,7 +36,7 @@ const Contact: NextPageWithLayout = () => {
                                         <AiOutlineMail className='text-6xl text-violet-800 block' />
                                         <div className="ltr ml-4 space-y-2">
                                             <h4 className="text-xl font-righteous font-bold ltr capitalize">email address :</h4>
-                                            <p className="text-sm lg:text-lg ltr tracking-wider">behnam.main@gmail.com</p>
+                                            <p className="text-sm lg:text-lg ltr tracking-wider">{email_address}</p>
                                         </div>
                                     </li>
 
@@ -40,7 +44,7 @@ const Contact: NextPageWithLayout = () => {
                                         <AiOutlineHome className='text-6xl text-violet-800 block' />
                                         <div className="ltr ml-4 space-y-2">
                                             <h4 className="text-xl font-righteous font-bold ltr capitalize">home address :</h4>
-                                            <p className="text-sm lg:text-lg ltr tracking-wider">markazi , arak , hepko</p>
+                                            <p className="text-sm lg:text-lg ltr tracking-wider">{home_address}</p>
                                         </div>
                                     </li>
                                 </ul>
@@ -60,3 +64,26 @@ Contact.getLayout = function getLayout(page: ReactElement) {
 };
 
 export default Contact;
+
+
+export async function getStaticProps() {
+    let props = { contact: {}}
+    try {
+        const { data } : {data: IPortfolio[] } =  await axios(process.env.BASE_URL! , {params : {search : 'contact'}});
+        const contact= data.map( (response)  => {
+            const {mobile_number , email_address , home_address} = response.acf
+            return {
+                mobile_number , email_address , home_address
+            }
+        })
+        props.contact = contact[0];
+    }
+    catch (err) {
+        console.log('from home page :' , err  )
+    }
+
+    return {
+        props,
+        revalidate: 1
+    }
+}

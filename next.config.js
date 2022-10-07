@@ -5,6 +5,7 @@ const nextConfig = {
   images: {
     loader: 'akamai',
     path: '/',
+    domains: ['behnam-rahmati-samples.ir']
   },
 }
 
