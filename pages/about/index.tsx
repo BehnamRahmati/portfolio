@@ -5,6 +5,7 @@ import PageHeading from "@/components/headings/page_heading/PageHeading";
 import axios from "axios";
 import Image from "next/image";
 import {PropagateLoader} from "react-spinners";
+import Head from "next/head";
 
 const About: NextPageWithLayout<{ about : IHome}> = ({about}) => {
 
@@ -30,6 +31,10 @@ const About: NextPageWithLayout<{ about : IHome}> = ({about}) => {
 
     return (
         <>
+
+            <Head>
+                <title>Behnam&apos;s portfolio | About</title>
+            </Head>
             <section className="min-h-screen bg-moon-gradient pt-14 lg:pt-44 ">
                 <div className="px-4 py-24 lg:p-24 container mx-auto">
                     <PageHeading title={'brief about me'} subtitle={'bio'} shortTitle={'about'} />

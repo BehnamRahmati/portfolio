@@ -14,6 +14,7 @@ import styles from "@/components/header/Header.module.css";
 import {CgClose} from "react-icons/cg";
 import {Transition} from "react-transition-group";
 import axios from "axios";
+import Head from "next/head";
 
 
 
@@ -42,6 +43,10 @@ const Home: NextPageWithLayout<{ home : IHome}> = ({home}) => {
 
 
 	return <>
+
+		<Head>
+			<title>Behnam&apos;s portfolio | Home</title>
+		</Head>
 
 		<section className={'home-banner relative bg-moon-gradient'} >
 

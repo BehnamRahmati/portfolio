@@ -5,6 +5,7 @@ import PageHeading from "@/components/headings/page_heading/PageHeading";
 import {AiOutlineHome, AiOutlineMail, AiOutlinePhone} from "react-icons/ai";
 import {renderPrimaryCards} from '@/components//utils/helpers'
 import axios from "axios";
+import Head from "next/head";
 
 const Works: NextPageWithLayout<{ works : IHome[] , contact: IHome}>= ({works , contact}) => {
     const worksArr = works[0].works
@@ -12,6 +13,10 @@ const Works: NextPageWithLayout<{ works : IHome[] , contact: IHome}>= ({works , 
 
     return (
         <>
+
+            <Head>
+                <title>Behnam&apos;s portfolio | works</title>
+            </Head>
             <section className="min-h-screen pt-14 lg:pt-44" >
 
                 <div className="container mx-auto px-5 pt-24 lg:p-24 space-y-10 lg:space-y-20">

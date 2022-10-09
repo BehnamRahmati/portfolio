@@ -5,6 +5,7 @@ import PageHeading from "@/components/headings/page_heading/PageHeading";
 import {AiOutlinePhone , AiOutlineHome , AiOutlineMail} from "react-icons/ai";
 import ContactForm from "@/components/forms/contact_form/ContactForm";
 import axios from "axios";
+import Head from "next/head";
 
 const Contact: NextPageWithLayout<{ contact : IHome}> = ({contact}) => {
 
@@ -12,6 +13,9 @@ const Contact: NextPageWithLayout<{ contact : IHome}> = ({contact}) => {
 
     return (
         <>
+            <Head>
+                <title>Behnam&apos;s portfolio | contact</title>
+            </Head>
             <section className="min-h-screen bg-moon-gradient pt-14 lg:pt-44">
 
                 <div className="container mx-auto px-5 py-24 lg:p-24">

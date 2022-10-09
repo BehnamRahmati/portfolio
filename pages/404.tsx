@@ -2,10 +2,15 @@ import {NextPageWithLayout} from "./page";
 import {ReactElement} from "react";
 import PrimaryLayout from "@/components/layouts/primary_layout/PrimaryLayout";
 import PrimaryButton from "@/components/buttons/primary-button/PrimaryButton";
+import Head from "next/head";
 
 const NotFound: NextPageWithLayout = () => {
     return (
         <>
+
+            <Head>
+                <title>Behnam&apos;s portfolio | page not found</title>
+            </Head>
             <section className="h-screen bg-moon-gradient ">
 
                 <div className="h-full grid place-items-center">
