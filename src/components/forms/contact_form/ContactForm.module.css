@@ -1,0 +1,17 @@
+
+.form {
+    @apply flex flex-col h-full;
+}
+.input {
+    @apply mb-6 h-10 bg-transparent border border-violet-700 rounded-lg p-5 outline-0;
+    direction: ltr;
+}
+
+.textarea {
+    @apply h-32 bg-transparent border border-violet-700 p-5 rounded-lg outline-0;
+    direction: ltr;
+}
+
+.submitBtn {
+    @apply w-full bg-violet-500 p-4 text-lg capitalize text-center mt-24 lg:mt-auto lg:mb-0 rounded-lg transition-all delay-75 ease-in-out transform hover:scale-105;
+}
