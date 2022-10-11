@@ -49,7 +49,7 @@ const Header: React.FC = () => {
 						...headerTransitionStyles[state]
 					}}>
 						<div className="menu-container">
-							<div className="flex flex-row items-center justify-between container mx-auto p-5 lg:py-5 lg:px-0">
+							<div className="flex flex-row items-center justify-between container mx-auto p-5 lg:py-5 2xl:px-0">
 								<div>
 									<button type="button" onClick={() => setInProp(!inProp)}>
 										<CgClose className='text-white text-2xl lg:text-5xl' />

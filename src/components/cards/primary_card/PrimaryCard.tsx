@@ -2,7 +2,7 @@ import styles from "./PrimaryCard.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import {FiGithub} from 'react-icons/fi'
-import {CSSProperties, useEffect, useState} from "react";
+import React, {CSSProperties, useEffect, useState} from "react";
 import axios from "axios";
 import {PropagateLoader} from "react-spinners";
 
@@ -39,11 +39,15 @@ const PrimaryCard: React.FC<IPrimaryCard> = ({
 
 	} , [])
 
+	const myLoader = ({ src, width, quality } : {src : string; width : number; quality? : number}) => {
+		return `${src}?w=${width}&q=${quality || 75}`
+	}
+
 
 	return <div className={styles.cardContainer}>
 		<div className={styles.cardHeading}>
 			<div>
-				<a href={github_url} target={'_blank'} rel={'noreferrer'} className={styles.btnGithub}> <FiGithub className={'text-2xl text-violet-700'} /> </a>
+				{github_url === '' || !github_url ? '' :<a href={github_url} target={'_blank'} rel={'noreferrer'} className={styles.btnGithub}> <FiGithub className={'text-2xl text-violet-700'} /> </a>}
 				<Link href={live_preview}>
 					<a className={styles.btnPreview}> live preview </a>
 				</Link>
@@ -53,7 +57,7 @@ const PrimaryCard: React.FC<IPrimaryCard> = ({
 		</div>
 
 		<div className={styles.cardImage}>
-			{thumbnailUrl ? <Image loader={() => thumbnailUrl} src={thumbnailUrl} alt={'behnam-rahmati-project'} layout={'fill'} className='rounded-3xl' /> : <PropagateLoader color="rgb(124 58 237)" cssOverride={override} />}
+			{thumbnailUrl ? <Image loader={() => myLoader({ src: thumbnailUrl ,width : 400 })} src={thumbnailUrl} priority={true} alt={'behnam-rahmati-project'} layout={'fill'} className='rounded-3xl' /> : <PropagateLoader color="rgb(124 58 237)" cssOverride={override} />}
 		</div>
 
 		<h3 className='flex lg:hidden flex-row items-center mt-2 lg:mt-0'>

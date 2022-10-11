@@ -1,0 +1,27 @@
+
+
+.list {
+    @apply flex flex-col divide-y-2 lg:mt-14 lg:border-2 lg:border-white lg:rounded-3xl lg:p-5;
+    direction: ltr;
+}
+
+.list_item {
+    @apply flex flex-row items-center  py-5;
+    direction: ltr;
+}
+
+.list_item > div {
+    @apply ml-4 space-y-2;
+    direction: ltr;
+}
+
+.list_item > div > h4 {
+    @apply text-xl font-bold capitalize;
+    font-family: 'Righteous', cursive;
+    direction: ltr;
+}
+.list_item > div > p {
+    @apply text-sm lg:text-lg tracking-wider;
+    direction: ltr;
+}
+

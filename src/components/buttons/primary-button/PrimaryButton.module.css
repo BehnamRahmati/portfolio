@@ -1,0 +1,20 @@
+.outer {
+    @apply border border-white rounded-lg p-2 w-fit flex flex-row items-center justify-center transition-all delay-75 ease-in-out transform hover:scale-105;
+}
+
+.inner {
+    @apply bg-violet-500 rounded-lg text-white px-4 pb-2 pt-3 capitalize flex flex-row items-center justify-center;
+}
+
+.secondary_inner {
+    @apply bg-white rounded-lg text-violet-500 px-4 pb-2 pt-3 capitalize flex flex-row items-center justify-center;
+
+}
+
+.secondary_inner svg {
+    @apply text-xl text-violet-500 ml-2;
+}
+
+.inner svg {
+    @apply text-xl text-white ml-2;
+}

@@ -1,4 +1,5 @@
 import styles from "./SecondaryCard.module.css";
+import React from "react";
 
 export interface ISecondaryCard {
 	title: string;

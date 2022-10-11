@@ -1,9 +1,9 @@
 .header {
-    @apply fixed top-0 right-0 left-0 w-screen p-5 lg:py-5 lg:px-0 z-30 transition-all delay-75 ease-in-out;
+    @apply fixed top-0 right-0 left-0 w-screen p-5 2xl:py-5 2xl:px-0 z-30 transition-all delay-75 ease-in-out;
 }
 .headerScrolled {
-    @apply backdrop-blur-lg;
-    padding: 10px 0 !important;
+    @apply backdrop-blur-lg ;
+    padding: 10px 20px !important;
 }
 
 .header > div {

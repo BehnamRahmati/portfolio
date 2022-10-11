@@ -44,6 +44,7 @@
     text-shadow: -10px 10px rgba(168, 85 , 247 , 1);
     font-family: 'Righteous', cursive;
 }
+
  .topLetter {
      @apply absolute top-20 lg:top-10 right-24 lg:right-56 text-7xl font-bold;
      text-shadow: -10px 10px rgba(168, 85 , 247 , 1);
@@ -123,4 +124,9 @@
 
 .arrowTopRight {
     @apply text-4xl lg:text-8xl text-white mr-10 lg:mr-20;
+}
+
+.contactForm {
+    @apply fixed bottom-0 left-0 right-0 top-0;
+    background: radial-gradient( farthest-corner at 100vw 0px   , rgb(99 102 241) -50% , rgb(15,23,42) 50%);
 }

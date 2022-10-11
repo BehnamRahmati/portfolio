@@ -3,6 +3,9 @@ import {ReactElement} from "react";
 import Head from "next/head";
 import {fetchContact} from "../../libs/contact/contact.helper";
 
+//styles
+import styles from './contact.module.css';
+
 //components
 import {PrimaryLayout, PageHeading, ContactForm} from '@/components/imports';
 
@@ -29,30 +32,30 @@ const Contact: NextPageWithLayout<{ contact : IHome}> = ({contact}) => {
                             <div className="h-full">
                                 <ContactForm />
                             </div>
-                            <div className='bg-violet-500 rounded-lg px-5 py-10 lg:p-10'>
+                            <div className='bg-violet-500 rounded-3xl px-5 py-10 md:p-10'>
                                 <h3 className="mb-10 text-4xl font-righteous font-black ltr">I&apos;d love to hear about your suggestions <span className="leading-6 text-6xl font-bold text-violet-800">.</span></h3>
-                                <ul className="flex flex-col divide-y-2 ltr lg:my-14">
-                                    <li className="flex flex-row items-center ltr py-5">
+                                <ul className={styles.list}>
+                                    <li className={styles.list_item}>
                                         <AiOutlinePhone className='text-6xl text-violet-800 transform rotate-90 block' />
-                                        <div className="ltr ml-4 space-y-2">
-                                            <h4 className="text-xl font-righteous font-bold ltr capitalize">mobile number :</h4>
-                                            <p className="text-sm lg:text-lg ltr tracking-wider">{mobile_number}</p>
+                                        <div>
+                                            <h4>mobile number :</h4>
+                                            <p>{mobile_number}</p>
                                         </div>
                                     </li>
 
-                                    <li className="flex flex-row items-center ltr py-5">
+                                    <li className={styles.list_item}>
                                         <AiOutlineMail className='text-6xl text-violet-800 block' />
-                                        <div className="ltr ml-4 space-y-2">
-                                            <h4 className="text-xl font-righteous font-bold ltr capitalize">email address :</h4>
-                                            <p className="text-sm lg:text-lg ltr tracking-wider">{email_address}</p>
+                                        <div>
+                                            <h4>email address :</h4>
+                                            <p>{email_address}</p>
                                         </div>
                                     </li>
 
-                                    <li className="flex flex-row items-center ltr py-5">
+                                    <li className={styles.list_item}>
                                         <AiOutlineHome className='text-6xl text-violet-800 block' />
-                                        <div className="ltr ml-4 space-y-2">
-                                            <h4 className="text-xl font-righteous font-bold ltr capitalize">home address :</h4>
-                                            <p className="text-sm lg:text-lg ltr tracking-wider">{home_address}</p>
+                                        <div >
+                                            <h4>home address :</h4>
+                                            <p>{home_address}</p>
                                         </div>
                                     </li>
                                 </ul>

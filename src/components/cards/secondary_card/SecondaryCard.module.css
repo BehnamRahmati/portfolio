@@ -17,6 +17,7 @@
 
 .secondaryCard > div:nth-child(2) p {
     @apply text-center lg:text-left text-lg leading-8;
+    direction: ltr;
 }
 
 .secondaryCard:nth-child(2n + 1) {

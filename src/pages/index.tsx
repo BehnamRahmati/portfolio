@@ -102,7 +102,7 @@ const Home: NextPageWithLayout<{ home : IHome}> = ({home}) => {
 
 			<Transition nodeRef={elRef} in={inPropContact} timeout={500}>
 				{state => (
-					<div className={styles.headerMenu} ref={elRef} style={{
+					<div className={styles.contactForm} ref={elRef} style={{
 						...defaultStyle,
 						...transitionStyles[state]
 					}}>

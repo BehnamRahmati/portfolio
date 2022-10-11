@@ -5,7 +5,7 @@ import {fetchWorks} from "../../libs/works/works.helper";
 
 //components
 import {renderPrimaryCards} from '@/components//utils/helpers';
-import {PrimaryLayout , PageHeading} from  '@/components/imports';
+import {PrimaryLayout, PageHeading, PrimaryButton} from '@/components/imports';
 
 //external
 import {AiOutlineHome, AiOutlineMail, AiOutlinePhone} from "react-icons/ai";
@@ -35,8 +35,10 @@ const Works: NextPageWithLayout<{ works : IHome[] , contact: IHome}>= ({works , 
             <section className="container mx-auto py-24">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-0 ltr">
                     <div className="ltr col-span-1 bg-violet-700 grid place-content-center p-10 lg:p-20">
-                        <h3 className="ltr w-fit text-5xl font-righteous mb-10">what are you waiting for?</h3>
-
+                        <h3 className="ltr w-96 text-center text-5xl font-righteous mb-10">what are you waiting for?</h3>
+                        <div className={'grid place-items-center'}>
+                            <PrimaryButton content={'get started'} url={'/contact'} secondary={true} />
+                        </div>
                     </div>
                     <div className="ltr col-span-1 border-b-2 border-violet-700 p-5 lg:pl-10">
 

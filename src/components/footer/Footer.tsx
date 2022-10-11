@@ -1,16 +1,12 @@
 import styles from "./Footer.module.css";
 
 import {SiLinkedin} from 'react-icons/si';
-import {FaBehanceSquare , FaGithubSquare , FaWhatsappSquare , FaEnvelope} from 'react-icons/fa';
-import {useEffect, useRef} from "react";
+import {FaBehanceSquare , FaGithubSquare , FaWhatsappSquare } from 'react-icons/fa';
+import React, {useEffect, useRef} from "react";
 
-export interface IFooter {
-	className?: string;
-}
+export interface IFooter {}
 
-const Footer: React.FC<IFooter> = ({
-	className = "",
-}) => {
+const Footer: React.FC<IFooter> = () => {
 	const cursorRef = useRef<HTMLDivElement>(null)
 
 	useEffect(() => {
@@ -27,14 +23,13 @@ const Footer: React.FC<IFooter> = ({
 
 	return <footer className={styles.footer}>
 
-		<div className='px-5 lg:px-0 py-10 lg:py-24'>
+		<div className='px-5 2xl:px-0 py-10 lg:py-24'>
 			<div className="py-5 border-t-2 border-t-white flex flex-col-reverse space-y-10 space-y-reverse lg:space-y-0 lg:flex-row items-center justify-between container mx-auto">
 				<div className="flex flex-row items-center space-x-4 ltr">
-					<a> <SiLinkedin className=" text-white" style={{fontSize: '1.6rem'}} /> </a>
-					<a> <FaBehanceSquare className="text-3xl text-white"  /> </a>
-					<a> <FaGithubSquare className="text-3xl text-white"  /> </a>
-					<a> <FaWhatsappSquare className="text-3xl text-white"  /> </a>
-					<a> <FaEnvelope className="text-3xl text-white"  /> </a>
+					<a href={'https://www.linkedin.com/in/behnam-rahmati-6a811117a/'} target={'_blank'} rel={'noreferrer'} > <SiLinkedin className=" text-white" style={{fontSize: '1.6rem'}} /> </a>
+					<a href={'https://www.behance.net/OsamaDaimallah'} target={'_blank'} rel={'noreferrer'} > <FaBehanceSquare className="text-3xl text-white"  /> </a>
+					<a href={'https://github.com/BehnamRahmati'} target={'_blank'} rel={'noreferrer'} > <FaGithubSquare className="text-3xl text-white"  /> </a>
+					<a href={''} target={'_blank'} rel={'noreferrer'} > <FaWhatsappSquare className="text-3xl text-white"  /> </a>
 				</div>
 
 				<div className='flex flex-row items-end ltr space-x-4'>
