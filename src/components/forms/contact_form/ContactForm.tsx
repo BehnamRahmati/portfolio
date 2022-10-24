@@ -14,7 +14,7 @@ const ContactForm: React.FC = () => {
 					<input onChange={(e) => setBody({...body , ['your-subject'] : e.target.value})} type={'text'} placeholder={'enter your sunject'} value={body['your-subject']} className={styles.input}/>
 					<input onChange={(e) => setBody({...body , ['your-email'] : e.target.value})} type={'email'}placeholder={'enter your email'} value={body['your-email']} className={styles.input} />
 					<textarea onChange={(e) => setBody({...body , ['your-message'] : e.target.value})} value={body['your-message']} placeholder={'what is in your mind?'} className={styles.textarea} ></textarea>
-					<button type={"button"} onClick={() => postData() } className={styles.submitBtn}>fucking loading</button>
+					<button type={"button"} onClick={() => postData() } className={styles.submitBtn}>Gracefully loading</button>
 				</form>
 			</div>
 		)
