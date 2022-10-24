@@ -14,6 +14,7 @@ const PrimaryLayout: React.FC<IPrimaryLayout> = ({
 	return <>
 		<Head>
 			<title> بهنام رحمتی </title>
+			<meta name="description" content="است نسحه اول وب سایت پورتفولیو بهنام رحمتی فرانت اند دولوپر ری اکت است." />
 		</Head>
 		<Header />
 		<main className='flex-1'>{children}</main>
