@@ -14,7 +14,7 @@ const PrimaryList: React.FC<IPrimaryList> = ({ title, count, list }) => {
 				<h3>{title}</h3>
 			</div>
 
-			<ul className="ltr">
+			<ul>
 				{list.map((item, i) => {
 					return <li key={item.info_item}>{item.info_item}</li>;
 				})}

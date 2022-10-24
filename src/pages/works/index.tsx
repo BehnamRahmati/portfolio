@@ -19,12 +19,7 @@ const Works: NextPageWithLayout<{ works : IHome[] , contact: IHome}>= ({works , 
 
     return (
         <>
-
-            <Head>
-                <title>کار های | بهنام رحمتی </title>
-            </Head>
-
-            <section className="min-h-screen pt-14 lg:pt-44" >
+            <section className="min-h-screen pt-14 lg:pt-36" >
 
                 <div className="container mx-auto px-5 pt-24 lg:p-24 space-y-10 lg:space-y-20">
                     <PageHeading shortTitle={'work'} title={'recent work'} subtitle={'works'}/>
@@ -37,7 +32,7 @@ const Works: NextPageWithLayout<{ works : IHome[] , contact: IHome}>= ({works , 
                     <div className="ltr col-span-1 bg-violet-700 grid place-content-center p-10 lg:p-20">
                         <h3 className="ltr w-96 text-center text-5xl font-righteous mb-10">what are you waiting for?</h3>
                         <div className={'grid place-items-center'}>
-                            <PrimaryButton content={'get started'} url={'/contact'} secondary={true} />
+                            <PrimaryButton content={'get started'} url={'mailto: behnam.main@gmail.com'} secondary={true} />
                         </div>
                     </div>
                     <div className="ltr col-span-1 border-b-2 border-violet-700 p-5 lg:pl-10">

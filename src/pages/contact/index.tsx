@@ -20,10 +20,7 @@ const Contact: NextPageWithLayout<{ contact : IHome}> = ({contact}) => {
 
     return (
         <>
-            <Head>
-                <title> تماس با | بهنام رحمتی</title>
-            </Head>
-            <section className="min-h-screen bg-moon-gradient pt-14 lg:pt-44">
+            <section className="min-h-screen bg-moon-gradient pt-14 lg:pt-36">
 
                 <div className="container mx-auto px-5 py-24 lg:p-24">
                     <PageHeading title={'get in touch with me.'} subtitle={'contact me!'} shortTitle={'contact'}/>

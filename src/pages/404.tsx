@@ -7,10 +7,6 @@ import Head from "next/head";
 const NotFound: NextPageWithLayout = () => {
     return (
         <>
-
-            <Head>
-                <title>Behnam&apos;s portfolio | page not found</title>
-            </Head>
             <section className="h-screen bg-moon-gradient ">
 
                 <div className="h-full grid place-items-center">

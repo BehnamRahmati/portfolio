@@ -1,3 +1,8 @@
 .content p{
-    @apply mb-5;
+    @apply mb-5 leading-7 text-left;
+    direction: ltr;
+}
+
+.content {
+    direction: ltr;
 }

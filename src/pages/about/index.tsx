@@ -31,7 +31,7 @@ const About: NextPageWithLayout<{ about : IHome}> = ({about}) => {
 
         (async() => {
             const {data} = await axios(`https://behnam-rahmati-samples.ir/wp-json/wp/v2/media/${image}` );
-            setThumbnailUrl(data.media_details.sizes.medium_large.source_url);
+            setThumbnailUrl(data.media_details.sizes.medium.source_url);
         })();
 
     } , [])
@@ -43,23 +43,18 @@ const About: NextPageWithLayout<{ about : IHome}> = ({about}) => {
 
     return (
         <>
-
-            <Head>
-                <title> درباره | بهنام رحمتی</title>
-            </Head>
-
-            <section className="min-h-screen bg-moon-gradient pt-14 lg:pt-44 ">
+            <section className="min-h-screen bg-moon-gradient pt-14 lg:pt-36 ">
                 <div className="px-4 py-24 lg:p-24 container mx-auto">
                     <PageHeading title={'brief about me'} subtitle={'bio'} shortTitle={'about'} />
 
-                    <div className=" pt-32">
+                    <div className=" pt-32 md:px-24">
                         <div className="lg:grid lg:grid-cols-3 lg:gap-20 flex flex-col-reverse space-y-20 space-y-reverse lg:space-y-0">
                             <div className="lg:col-span-2 flex flex-col justify-center h-full">
                                 <h3 className="mb-6 font-righteous font-bold text-3xl ltr first-letter:capitalize">{title}</h3>
                                 <div className={styles.content} dangerouslySetInnerHTML={{__html: content}}/>
                                  </div>
                             <div className="lg:col-span-1">
-                                <div className="relative h-96 w-full lg:w-72 grid place-content-center">
+                                <div className="relative h-96 w-full lg:w-96 grid place-content-center">
                                     {thumbnailUrl ?  <Image loader={() => myLoader({ src: thumbnailUrl ,width : 300 })} priority={true} src={thumbnailUrl} alt={'behnam-rahmati-project'} layout={'fill'} className='rounded-3xl' /> : <PropagateLoader color="rgb(124 58 237)" cssOverride={override} />}
                                 </div>
                             </div>

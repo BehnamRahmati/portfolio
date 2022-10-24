@@ -20,7 +20,8 @@
 }
 
 .listContainer > ul {
-	@apply grid grid-cols-1 gap-8 lg:pl-10 w-64;
+	@apply grid grid-cols-1 gap-8 pl-10 lg:w-64 ml-0 mr-auto;
+	direction: ltr;
 }
 
 .listContainer > ul li {
@@ -30,9 +31,9 @@
 
 .listContainer > ul li::before {
 	content: "";
-	@apply w-2 h-2 rounded-full bg-violet-700 block absolute top-2.5 -left-10;
+	@apply w-2 h-2 rounded-full bg-violet-700 block absolute top-2 -left-10;
 }
 .listContainer > ul li::after {
 	content: "";
-	@apply w-5 h-5 rounded-full bg-transparent border border-white block absolute top-1 -left-12 ml-0.5;
+	@apply w-5 h-5 rounded-full bg-transparent border border-white block absolute top-0.5 -left-12 ml-0.5;
 }
